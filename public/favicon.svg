@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="GIF Converter icon">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f46a44"/>
+      <stop offset="100%" stop-color="#d84f2a"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#11201e"/>
+  <path d="M16 32h32" stroke="url(#g)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M25 22l-9 10 9 10" fill="none" stroke="#f7efe2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M39 22l9 10-9 10" fill="none" stroke="#f7efe2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

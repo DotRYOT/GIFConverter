@@ -1,0 +1,15 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Route API requests
+RewriteRule ^api/?$ api.php [L,QSA]
+
+# Clean download URLs so mobile browsers save the file with the correct .gif name
+# /download/{jobId}/{filename}.gif -> api.php?action=download&job={jobId}
+RewriteRule ^download/([A-Za-z0-9_-]+)/(.+)$ api.php?action=download&job=$1 [L,QSA]
+
+# Block direct access to private storage
+RewriteRule ^private/ - [F,L]
+</IfModule>
