@@ -3,9 +3,9 @@ Options -Indexes
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
-# Set the base directory if you're in a subdirectory
-# Adjust this to match your actual subdirectory path
-RewriteBase /gifconverter/
+# Automatically detect the correct base directory
+# Comment out the automatic detection and use explicit RewriteBase if needed
+# RewriteBase /gifconverter/
 
 # Route API requests
 RewriteRule ^api/?$ api.php [L,QSA]
