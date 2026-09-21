@@ -3,21 +3,16 @@ Options -Indexes
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
-# Automatically detect the correct base directory
-# Comment out the automatic detection and use explicit RewriteBase if needed
-# RewriteBase /gifconverter/
-
-# Route API requests
-RewriteRule ^api/?$ api.php [L,QSA]
+# Block direct access to private storage (must come before other rules)
+RewriteRule ^private/ - [F,L]
 
 # Clean download URLs so mobile browsers save the file with the correct .gif name
 # /download/{jobId}/{filename}.gif -> api.php?action=download&job={jobId}
 # Job IDs are 32-character hex strings, filenames can contain various characters
-# This rule must come BEFORE the private block and general catch-all
 RewriteRule ^download/([a-f0-9]{32})/(.+)$ api.php?action=download&job=$1 [L,QSA]
 
-# Block direct access to private storage
-RewriteRule ^private/ - [F,L]
+# Route API requests
+RewriteRule ^api/?$ api.php [L,QSA]
 
 # Catch-all for SPA routing (if needed)
 RewriteCond %{REQUEST_FILENAME} !-f
