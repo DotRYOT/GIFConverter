@@ -8,7 +8,9 @@ RewriteRule ^api/?$ api.php [L,QSA]
 
 # Clean download URLs so mobile browsers save the file with the correct .gif name
 # /download/{jobId}/{filename}.gif -> api.php?action=download&job={jobId}
-RewriteRule ^download/([A-Za-z0-9_-]+)/(.+)$ api.php?action=download&job=$1 [L,QSA]
+# Job IDs are 32-character hex strings, filenames can contain various characters
+RewriteCond %{REQUEST_URI} ^/download/[a-f0-9]{32}/
+RewriteRule ^download/([a-f0-9]{32})/(.+)$ api.php?action=download&job=$1 [L,QSA]
 
 # Block direct access to private storage
 RewriteRule ^private/ - [F,L]

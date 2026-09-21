@@ -1,1 +1,10 @@
-Nothing needs to be added to .gitignore since the changes only include source/config files (.sh and .md) without any build artifacts, dependencies, or temporary files that should be ignored.
+*.sh.bak
+*.sh~
+*.tmp
+.DS_Store
+Thumbs.db
+.git/
+!.gitignore
+!.htaccess
+setup.sh.swp
+update.sh.swp
