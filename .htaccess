@@ -4,8 +4,8 @@ Options -Indexes
 RewriteEngine On
 
 # Set the base directory if you're in a subdirectory
-# Uncomment and adjust if your project is in a subdirectory like /gifconverter/
-# RewriteBase /gifconverter/
+# Adjust this to match your actual subdirectory path
+RewriteBase /gifconverter/
 
 # Route API requests
 RewriteRule ^api/?$ api.php [L,QSA]
@@ -13,9 +13,14 @@ RewriteRule ^api/?$ api.php [L,QSA]
 # Clean download URLs so mobile browsers save the file with the correct .gif name
 # /download/{jobId}/{filename}.gif -> api.php?action=download&job={jobId}
 # Job IDs are 32-character hex strings, filenames can contain various characters
-RewriteCond %{REQUEST_URI} /download/[a-f0-9]{32}/
+# This rule must come BEFORE the private block and general catch-all
 RewriteRule ^download/([a-f0-9]{32})/(.+)$ api.php?action=download&job=$1 [L,QSA]
 
 # Block direct access to private storage
 RewriteRule ^private/ - [F,L]
+
+# Catch-all for SPA routing (if needed)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L,QSA]
 </IfModule>
