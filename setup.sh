@@ -43,6 +43,7 @@ DIRS=(
     "$PROJECT_DIR/private/logs"
     "$PROJECT_DIR/private/jobs"
     "$PROJECT_DIR/config"
+    "$PROJECT_DIR/download"
 )
 
 for dir in "${DIRS[@]}"; do
@@ -60,6 +61,7 @@ echo "Setting directory permissions..."
 # Set ownership to web server user for private directories
 chown -R "$WEB_USER:$WEB_GROUP" "$PROJECT_DIR/private"
 chown "$WEB_USER:$WEB_GROUP" "$PROJECT_DIR/config"
+chown "$WEB_USER:$WEB_GROUP" "$PROJECT_DIR/download"
 
 # Set permissions
 # Directories: 755 (rwxr-xr-x) - owner can read/write/execute, others can read/execute
@@ -70,6 +72,7 @@ chmod 700 "$PROJECT_DIR/private/outputs"
 chmod 700 "$PROJECT_DIR/private/logs"
 chmod 700 "$PROJECT_DIR/private/jobs"
 chmod 755 "$PROJECT_DIR/config"
+chmod 755 "$PROJECT_DIR/download"
 
 # Make config files readable by web server but not world-writable
 if [ -f "$PROJECT_DIR/config/app.php" ]; then
