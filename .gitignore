@@ -1,1 +1,6 @@
-Nothing needs to be added to the .gitignore file based on the provided file changes. The modification of only `.htaccess` does not require any additional ignore rules.
+```
+# Job artifacts and temporary files
+private/jobs/*/output.gif
+private/jobs/*/meta.json
+private/jobs/*/progress.json
+```
