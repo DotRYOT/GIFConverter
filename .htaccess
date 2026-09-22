@@ -2,6 +2,7 @@ Options -Indexes
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
+RewriteBase /htdocs/gifconverter/
 
 # Block direct access to private storage (must come first)
 RewriteRule ^private/ - [F,L]
